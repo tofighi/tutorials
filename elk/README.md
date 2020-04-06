@@ -1,7 +1,7 @@
 # ELK installation on Dataproc on GCP
 
+## Basic ELK stack installation
 * Create Dataproc clusters with at least **100 GB** space with **16GB ram**
-
 
 * Run below commands in your SSH terminal of your Master node in order:
 
@@ -36,16 +36,19 @@ Run the following commands:
 
 **curl http://localhost:9200/**
 
+If you can see some reports about your elasticsearch, it means your elasticsearch running correctly.
+
+## Running Logstash
 * Download car dataset and **cars_logstash.conf** directly to the VM by running this command in a new SSH window
 
-**wget http://sinamedialab.com/repository/documents/datasets/kaggle/cars.csv -O cars.csv**
-**wget http://sinamedialab.com/repository/documents/datasets/elk/cars_logstash.conf -O cars_logstash.conf**
+** **wget http://sinamedialab.com/repository/documents/datasets/kaggle/cars.csv -O cars.csv**
+** **wget http://sinamedialab.com/repository/documents/datasets/elk/cars_logstash.conf -O cars_logstash.conf**
 
 * Open new ssh window and run the following command in your home directory:
 
 **logstash/bin/logstash -f  cars_logstash.conf**
 
-
+## Running Kibana
 * Open new ssh window and run the following:
 
 **kibana/bin/kibana**
