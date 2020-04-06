@@ -1,7 +1,7 @@
 # ELK installation on Dataproc on GCP
 
 ## Basic ELK stack installation
-* Create Dataproc clusters with at least **100 GB** space with **16GB ram**
+* Create Dataproc clusters with at least **150 GB** space with **16GB ram**
 * Run below commands in your SSH terminal of your Master node in order:
   * **wget https://artifacts.elastic.co/downloads/logstash/logstash-6.7.1.tar.gz**
   * **wget http://sinamedialab.com/repository/documents/datasets/elk/elasticsearch-6.7.1.tar.gz**
