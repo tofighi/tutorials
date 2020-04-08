@@ -36,6 +36,6 @@ If you can see some reports about your elasticsearch, it means your elasticsearc
   * **logstash/bin/logstash -f  cars_logstash.conf**
 
 ## Running Kibana
-* Open new ssh window and run the following:
+* Open new ssh window and run the following (leave it running in it is own window):
   * **kibana/bin/kibana**
-
+* Find out the **External IP** of your Master Node, and for example, if it is 45.33.22.55, you can now open Kibana in the following URL http://45.33.22.55:5601 (make sure you replace the 45.33.22.55 with your own server's IP)
