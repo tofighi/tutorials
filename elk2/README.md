@@ -1,5 +1,8 @@
 # ELK installation on Dataproc on GCP
 
+## Open access to your GCP from your network
+* Make sure your GCP instances are accessible from your network using firewall rules. There is an **easy but not safe for production** procedure which you can watch [here](https://www.youtube.com/watch?v=2HdYYoMwZWI). For research and development, you can use the proposed configuration.
+
 ## Basic ELK stack installation
 * Create Dataproc clusters with at least **150 GB** space with **16GB ram**
 * Run below commands in your SSH terminal of your Master node in order:
