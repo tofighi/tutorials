@@ -1,4 +1,4 @@
-,Address,AreaName,Price ($),lat,lng
+ID,Address,AreaName,Price($),lat,lng
 0,"86 Waterford Dr Toronto, ON",Richview,999888,43.679882,-79.544266
 1,"#80 - 100 BEDDOE DR Hamilton, ON",Chedoke Park B,399900,43.25,-79.904396
 2,"213 Bowman Street Hamilton, ON",Ainslie Wood East,479000,43.25169,-79.919357
