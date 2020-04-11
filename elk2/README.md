@@ -6,12 +6,15 @@
   * **wget https://artifacts.elastic.co/downloads/logstash/logstash-6.7.1.tar.gz**
   * **wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.7.1.tar.gz**
   * **wget https://artifacts.elastic.co/downloads/kibana/kibana-6.7.1-linux-x86_64.tar.gz**
+  * **wget https://raw.githubusercontent.com/tofighi/tutorials/master/elk2/configs/elasticsearch.yml**
+  * **wget https://raw.githubusercontent.com/tofighi/tutorials/master/elk2/configs/kibana.yml**
   * **tar xf logstash-6.7.1.tar.gz**
   * **tar xf elasticsearch-6.7.1.tar.gz**
   * **tar xf kibana-6.7.1-linux-x86_64.tar.gz**
   * **mv logstash-6.7.1 logstash**
   * **mv elasticsearch-6.7.1 elasticsearch**
-  * **mv kibana-6.7.1-linux-x86_64 kibana**
+  * **mv elasticsearch.yml elasticsearch/config/elasticsearch.yml**
+  * **mv kibana.yml kibana/config/kibana.yml**
 
 ## Running Elasticsearch
 * Open a new ssh window to run Elasticsearch and leave it running
