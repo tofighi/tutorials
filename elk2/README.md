@@ -16,6 +16,7 @@
   * **tar xf kibana-6.7.1-linux-x86_64.tar.gz**
   * **mv logstash-6.7.1 logstash**
   * **mv elasticsearch-6.7.1 elasticsearch**
+  * **mv kibana-6.7.1-linux-x86_64 kibana**
   * **mv elasticsearch.yml elasticsearch/config/elasticsearch.yml**
   * **mv kibana.yml kibana/config/kibana.yml**
 
