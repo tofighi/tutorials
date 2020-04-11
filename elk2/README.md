@@ -34,10 +34,11 @@ If you can see some reports about your elasticsearch, it means your elasticsearc
 
 ## Running Logstash
 * Download car dataset and **cars_logstash.conf** directly to the VM by running this command in a new SSH window
-  * **wget http://sinamedialab.com/repository/documents/datasets/kaggle/cars.csv -O cars.csv**
-    * Move the csv file to /var/tmp directory:
+  * **wget https://raw.githubusercontent.com/tofighi/tutorials/master/elk2/data/cars.zip -O cars.zip**
+  * **unzip cars.zip && rm cars.zip**
+    * Move the csv file to `/var/tmp` directory:
     * **mv cars.csv /var/tmp** 
-  * **wget http://sinamedialab.com/repository/documents/datasets/elk/cars_logstash.conf -O cars_logstash.conf**
+  * **wget https://raw.githubusercontent.com/tofighi/tutorials/master/elk2/logstash_configs/cars_logstash.conf -O cars_logstash.conf**
 
 * Open new ssh window and run the following command in your home directory:
   * **logstash/bin/logstash -f  cars_logstash.conf**
