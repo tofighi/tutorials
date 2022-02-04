@@ -21,7 +21,7 @@ sudo -i service kibana start
 echo 'export PATH="$PATH":/usr/share/logstash/bin/' >> ~/.bashrc
 . ~/.bashrc
 printf "\n==================================================================\n"
-printf "elasticsearch is 9200 and kibana port is 5601\n"
+printf "elasticsearch port is 9200 and kibana port is 5601\n"
 printf "Enjoy!\n"
 printf "\n==================================================================\n"
 rm -- "$0"
