@@ -1,4 +1,4 @@
-# Installing ELK
+# Installing ELK 7
 
 In your command line execute the following command to download installation script:
 
