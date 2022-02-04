@@ -13,6 +13,8 @@ sudo update-rc.d kibana defaults 95 10
 sudo -i service elasticsearch start
 sudo -i service kibana start
 echo 'export PATH="$PATH":/usr/share/logstash/bin/' >> ~/.bashrc
-source ~/.bashrc 
-
+chmod a+x ~/.bashrc
+PS1='$ '
+source ~/.bashrc
+rm -- "$0"
 
