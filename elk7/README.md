@@ -1,4 +1,4 @@
-# Installing ELK 7
+# Installing ELK 7 on Google Clould Platform (GCP)
 
 In your command line execute the following command to download installation script:
 
