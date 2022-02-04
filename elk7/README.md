@@ -8,6 +8,6 @@ Then, give execution permission to `elk.sh`:
 
 `chmod +x ./elk.sh`
 
-Finally, install Elastic Stack using the following command:
+Finally, install the Elastic Stack using the following command:
 
-./elk
+`./elk`
