@@ -10,4 +10,4 @@ Then, give execution permission to `elk.sh`:
 
 Finally, install the Elastic Stack using the following command:
 
-`./elk`
+`./elk.sh`
