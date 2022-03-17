@@ -18,6 +18,10 @@ sudo update-rc.d elasticsearch defaults 95 10
 sudo update-rc.d kibana defaults 95 10
 sudo -i service elasticsearch start
 sudo -i service kibana start
+sudo /bin/systemctl daemon-reload
+sudo /bin/systemctl enable kibana.service
+sudo /bin/systemctl enable elasticsearch.service
+
 sudo chmod 777 /usr/share/logstash/data
 echo 'export PATH="$PATH":/usr/share/logstash/bin/' >> ~/.bashrc
 exec bash
