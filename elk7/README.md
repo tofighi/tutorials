@@ -33,4 +33,5 @@ mv cars.csv /var/tmp
 wget https://raw.githubusercontent.com/tofighi/tutorials/master/elk2/logstash_configs/cars_logstash.conf -O cars_logstash.conf
 
 Run Logstash with cars_logstash.conf
+
 logstash -f cars_logstash.conf
