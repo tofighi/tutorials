@@ -1,6 +1,6 @@
 # Installing ELK 7 on Google Clould Platform (GCP)
 
-In SSH Terminal of your Master node of Dataproc Cluster (or on a new virtual machine with 150GB storage and 16GB RAM, and 4 CPUs) run the following command to download installation script:
+In the SSH Terminal of your Master node of the Dataproc Cluster (or on a new virtual machine with 30GB storage and 16GB RAM, and 4 CPUs), run the following command to download the installation script:
 
 `curl -O https://raw.githubusercontent.com/tofighi/tutorials/master/elk7/elk.sh`
 
@@ -11,6 +11,8 @@ Then, give execution permission to `elk.sh`: (run in SSH Terminal)
 Finally, install the Elastic Stack using the following command:
 
 `./elk.sh`
+
+[Watch the video tutorial for installation](https://www.youtube.com/watch?v=bY8w__KKElk)
 
 # Accessing Kibana and Elastic Search
 
