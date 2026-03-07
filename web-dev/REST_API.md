@@ -113,13 +113,61 @@ Example request:
 https://api.openweathermap.org/data/2.5/weather?q=Toronto&appid=API_KEY
 ```
 
-You can get an API key from:
+## Register and Get an API Key
+
+To use the weather API you must create a free account and obtain an API key.
+
+### Step 1 — Create an Account
+
+Open the registration page:
 
 ```
-https://openweathermap.org/api
+https://home.openweathermap.org/users/sign_up
 ```
 
----
+Fill in:
+
+* Email
+* Username
+* Password
+
+Then confirm your email address.
+
+### Step 2 — Generate an API Key
+
+After logging in, go to the API keys page:
+
+```
+https://home.openweathermap.org/api_keys
+```
+
+You will see a default key such as:
+
+```
+2f3c8xxxxxxxxxxxxxxxxxxxx
+```
+
+You can also create additional keys if needed.
+
+### Step 3 — Wait for Activation
+
+New keys may take **5–10 minutes** to activate.
+
+### Step 4 — Use the API Key in Requests
+
+Example request:
+
+```
+https://api.openweathermap.org/data/2.5/weather?q=Toronto&appid=YOUR_API_KEY
+```
+
+Replace:
+
+```
+YOUR_API_KEY
+```
+
+with your actual
 
 # 5. Node.js Weather Application
 
