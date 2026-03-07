@@ -1,57 +1,61 @@
-# REST API Crash Course with Node.js Weather Example
+# REST API Crash Course with Node.js (OpenWeather One Call API 3.0)
 
-This short tutorial explains:
+This tutorial provides a **quick crash course on REST APIs** and shows how to build a **Node.js application that retrieves weather data using the OpenWeather One Call API 3.0**.
 
-* What REST APIs are
+You will learn:
+
+* What a REST API is
 * Core REST concepts
-* How to call a weather API
-* How to build a simple Node.js REST client
+* How to register and obtain an API key
+* How to request weather data using coordinates
+* How to build a Node.js REST client
 
 ---
 
 # 1. What is a REST API?
 
-A REST API (Representational State Transfer API) allows applications to communicate over HTTP.
+A **REST API (Representational State Transfer API)** allows applications to communicate with each other over HTTP.
 
-Example workflow:
+Typical workflow:
 
 ```
-Client (browser / app)
-↓ HTTP request
-REST API Server
-↓ JSON response
-Client receives data
+Client (browser / application)
+        ↓ HTTP request
+REST API server
+        ↓ JSON response
+Client receives structured data
 ```
 
 Example request:
 
 ```
-GET https://api.weather.com/weather?city=Toronto
+GET https://api.example.com/weather
 ```
 
 Example response:
 
 ```json
 {
-  "city": "Toronto",
   "temperature": 6,
   "condition": "Cloudy"
 }
 ```
 
+REST APIs typically return **JSON data** which is easy for programs to parse.
+
 ---
 
-# 2. REST Core Concepts
+# 2. Core REST Concepts
 
 ## Resources
 
-In REST, everything is treated as a resource.
+In REST, everything is treated as a **resource**.
 
 Examples:
 
 ```
-/users
 /weather
+/users
 /products
 /orders
 ```
@@ -60,17 +64,17 @@ Examples:
 
 ## HTTP Methods
 
-| Method | Purpose     | Example        |
-| ------ | ----------- | -------------- |
-| GET    | Read data   | Get weather    |
-| POST   | Create data | Create user    |
-| PUT    | Update data | Update profile |
-| DELETE | Remove data | Delete order   |
+| Method | Purpose       |
+| ------ | ------------- |
+| GET    | Retrieve data |
+| POST   | Create data   |
+| PUT    | Update data   |
+| DELETE | Remove data   |
 
 Example request:
 
 ```
-GET /weather/Toronto
+GET /weather
 ```
 
 ---
@@ -87,39 +91,13 @@ GET /weather/Toronto
 
 ---
 
-# 3. REST Response Format
+# 3. Register for the Weather API
 
-Most REST APIs use JSON.
+This tutorial uses the **OpenWeather API**.
 
-Example:
+## Step 1 — Create an Account
 
-```json
-{
-  "city": "Toronto",
-  "temperature": 4,
-  "humidity": 70
-}
-```
-
----
-
-# 4. Weather API Example
-
-This tutorial uses OpenWeather API.
-
-Example request:
-
-```
-https://api.openweathermap.org/data/2.5/weather?q=Toronto&appid=API_KEY
-```
-
-## Register and Get an API Key
-
-To use the weather API you must create a free account and obtain an API key.
-
-### Step 1 — Create an Account
-
-Open the registration page:
+Register here:
 
 ```
 https://home.openweathermap.org/users/sign_up
@@ -131,55 +109,70 @@ Fill in:
 * Username
 * Password
 
-Then confirm your email address.
+Then verify your email.
 
-### Step 2 — Generate an API Key
+---
 
-After logging in, go to the API keys page:
+## Step 2 — Obtain an API Key
+
+After logging in, go to:
 
 ```
 https://home.openweathermap.org/api_keys
 ```
 
-You will see a default key such as:
+You will receive an API key similar to:
 
 ```
 2f3c8xxxxxxxxxxxxxxxxxxxx
 ```
 
-You can also create additional keys if needed.
+API keys may take **a few minutes to activate**.
 
-### Step 3 — Wait for Activation
+---
 
-New keys may take **5–10 minutes** to activate.
+# 4. OpenWeather One Call API 3.0
 
-### Step 4 — Use the API Key in Requests
+The **One Call API 3.0** provides:
+
+* Current weather
+* Hourly forecast
+* Daily forecast
+* Weather alerts
+
+Unlike older APIs, it **requires geographic coordinates**.
 
 Example request:
 
 ```
-https://api.openweathermap.org/data/2.5/weather?q=Toronto&appid=YOUR_API_KEY
+https://api.openweathermap.org/data/3.0/onecall?lat=43.6577&lon=-79.3818&units=metric&appid=API_KEY
 ```
 
-Replace:
+Parameters:
 
-```
-YOUR_API_KEY
-```
-
-with your actual
-
-# 5. Node.js Weather Application
-
-Technologies used:
-
-* Node.js
-* Express.js
-* Axios
+| Parameter | Description        |
+| --------- | ------------------ |
+| lat       | Latitude           |
+| lon       | Longitude          |
+| appid     | Your API key       |
+| units     | metric or imperial |
 
 ---
 
-# Step 1 — Create the Project
+# 5. Example Coordinates
+
+For this tutorial we use **Toronto** coordinates:
+
+```
+Latitude  = 43.6577
+Longitude = -79.3818
+```
+
+---
+
+# 6. Creating the Node.js Project
+
+Create a new project:
 
 ```bash
 mkdir weather-app
@@ -195,7 +188,7 @@ npm install express axios
 
 ---
 
-# Step 2 — Project Structure
+# 7. Project Structure
 
 ```
 weather-app
@@ -206,7 +199,7 @@ weather-app
 
 ---
 
-# Step 3 — Node.js Application
+# 8. Node.js Weather Application
 
 Create `app.js`:
 
@@ -219,23 +212,25 @@ const PORT = 3000;
 
 const API_KEY = "YOUR_API_KEY";
 
-app.get("/weather/:city", async (req, res) => {
+// Toronto coordinates
+const LAT = 43.6577;
+const LON = -79.3818;
 
-  const city = req.params.city;
+app.get("/weather", async (req, res) => {
 
   try {
 
-    const response = await axios.get(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
-    );
+    const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${LAT}&lon=${LON}&units=metric&appid=${API_KEY}`;
 
-    const data = response.data;
+    const response = await axios.get(url);
+
+    const weather = response.data.current;
 
     res.json({
-      city: data.name,
-      temperature: data.main.temp,
-      humidity: data.main.humidity,
-      condition: data.weather[0].description
+      temperature: weather.temp,
+      humidity: weather.humidity,
+      wind_speed: weather.wind_speed,
+      description: weather.weather[0].description
     });
 
   } catch (error) {
@@ -255,7 +250,7 @@ app.listen(PORT, () => {
 
 ---
 
-# Step 4 — Run the Server
+# 9. Run the Server
 
 Start the application:
 
@@ -263,7 +258,7 @@ Start the application:
 node app.js
 ```
 
-Output:
+Expected output:
 
 ```
 Server running on port 3000
@@ -271,68 +266,80 @@ Server running on port 3000
 
 ---
 
-# Step 5 — Test the API
+# 10. Test the API
 
-Open your browser or run:
+Open a browser or run:
 
 ```
-http://localhost:3000/weather/Toronto
+http://localhost:3000/weather
 ```
 
 Example response:
 
 ```json
 {
-  "city": "Toronto",
-  "temperature": 5,
-  "humidity": 80,
-  "condition": "light rain"
+  "temperature": 6.4,
+  "humidity": 72,
+  "wind_speed": 3.2,
+  "description": "broken clouds"
 }
 ```
 
 ---
 
-# 6. Internal Workflow
+# 11. Internal Workflow
 
 ```
-Browser
-↓
-GET /weather/Toronto
-↓
+Client (browser)
+       ↓
+GET /weather
+       ↓
 Node.js Express server
-↓
-Calls OpenWeather API
-↓
-Receives JSON
-↓
-Returns simplified JSON to client
+       ↓
+Calls OpenWeather One Call API
+       ↓
+Receives JSON response
+       ↓
+Returns simplified JSON to the client
 ```
 
 ---
 
-# 7. Production Improvements
+# 12. Recommended Production Improvements
 
-Real applications usually include:
+Real applications normally include additional components.
 
-### Environment variables
+### Environment Variables
+
+Avoid storing API keys in code.
 
 ```
 npm install dotenv
 ```
 
+---
+
 ### Caching
+
+Weather APIs are often rate‑limited. Use caching.
 
 ```
 Redis
 ```
 
-### Rate limiting
+---
+
+### Rate Limiting
+
+Protect your API server.
 
 ```
 express-rate-limit
 ```
 
-### Input validation
+---
+
+### Input Validation
 
 ```
 Joi
@@ -341,7 +348,7 @@ Zod
 
 ---
 
-# 8. Typical REST Project Structure
+# 13. Typical REST Project Structure
 
 ```
 project
@@ -360,41 +367,20 @@ project
 
 ---
 
-# 9. Example REST API Design
+# 14. REST API Summary
 
-```
-GET /weather/Toronto
-GET /weather?city=Toronto
-POST /users
-PUT /users/42
-DELETE /users/42
-```
-
----
-
-# 10. REST API Summary
-
-REST APIs follow a simple pattern:
+REST APIs follow a simple architecture:
 
 ```
 Client → HTTP Request → Server
 Server → JSON Response → Client
 ```
 
-Using HTTP methods:
-
-```
-GET
-POST
-PUT
-DELETE
-```
-
-Common implementations:
+Common backend frameworks:
 
 ```
 Node.js + Express
-Python + Flask / FastAPI
+Python + FastAPI / Flask
 Java + Spring Boot
 ```
 
