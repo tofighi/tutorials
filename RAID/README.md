@@ -1,4 +1,4 @@
-RAID Storage Systems & Calculations
+# RAID Storage Systems & Calculations
 
 
 ---
@@ -75,3 +75,6 @@ To calculate the **Usable Capacity** of a RAID array, you must account for the "
 * B) 24TB
 * C) 12TB
 * D) 0TB
+
+
+[Solutions](solutions.md)
