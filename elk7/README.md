@@ -24,7 +24,7 @@ You should also be able to access Elastic Search using port 9200 (e.g., http://4
 
 (Make sure you replace the 45.33.22.55 with your own server's IP, and use http, not https). Also, make sure your firewall rules on the cloud give access to these port. 
 
-**Note 1:** If you have a problem loading the server, check your firewall rules. [Watch the video to see how you can open access to your server from any computer](https://www.youtube.com/watch?v=2HdYYoMwZWI)
+**Note 1:** If you have a problem loading the server on your browser, check your firewall rules. [Watch the video to see how you can open access to your server from any computer](https://www.youtube.com/watch?v=2HdYYoMwZWI)
 
 **Note 2:** Remember to delete the cluster when you are done
 
