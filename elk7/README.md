@@ -1,43 +1,203 @@
-# Installing ELK 7 on Google Clould Platform (GCP)
+# Installing ELK 7 on Google Cloud Platform (GCP)
 
-In the SSH Terminal of your Master node of the Dataproc Cluster (or on a new virtual machine with 30GB storage and 16GB RAM, and 4 CPUs), run the following command to download the installation script:
+## Overview
 
-`curl -O https://raw.githubusercontent.com/tofighi/tutorials/master/elk7/elk.sh`
+In this guide, you will install the **Elastic Stack (ELK 7)** on:
 
-Then, give execution permission to `elk.sh`: (run in SSH Terminal)
+* A **Dataproc Master Node**, or
+* A **GCP Virtual Machine** with:
 
-`chmod +x ./elk.sh`
+  * 30 GB storage
+  * 16 GB RAM
+  * 4 CPUs
 
-Finally, install the Elastic Stack using the following command:
+---
 
-`./elk.sh`
+## Step 1 — Download Installation Script
 
-[Watch the video tutorial for installation](https://www.youtube.com/watch?v=bY8w__KKElk)
+### Command
 
-# Accessing Kibana and Elastic Search
+```bash
+curl -O https://raw.githubusercontent.com/tofighi/tutorials/master/elk7/elk.sh
+```
 
-* Kibana Port: 5601
-* Elastic Search: 9200
+### Explanation
 
-Find out the External IP of your Master Node, and for example, if it is 45.33.22.55, you can now open Kibana in the following URL: http://45.33.22.55:5601 
-You should also be able to access Elastic Search using port 9200 (e.g., http://45.33.22.55:9200)
+* Downloads the ELK installation script (`elk.sh`) from GitHub to your current directory.
 
-(Make sure you replace the 45.33.22.55 with your own server's IP, and use http, not https). Also, make sure your firewall rules on the cloud give access to these port. 
+---
 
-**Note 1:** If you have a problem loading the server on your browser, check your firewall rules. [Watch the video to see how you can open access to your server from any computer](https://www.youtube.com/watch?v=2HdYYoMwZWI)
+## Step 2 — Make Script Executable
 
-**Note 2:** Remember to delete the cluster when you are done
+### Command
 
-# Sample Dataset
+```bash
+chmod +x ./elk.sh
+```
 
+### Explanation
+
+* Grants execution permission so the script can be run.
+
+---
+
+## Step 3 — Install ELK Stack
+
+### Command
+
+```bash
+./elk.sh
+```
+
+### Explanation
+
+* Executes the script to install:
+
+  * Elasticsearch
+  * Logstash
+  * Kibana
+
+---
+
+## Video Tutorial
+
+Watch a step-by-step walkthrough:
+[https://www.youtube.com/watch?v=bY8w__KKElk](https://www.youtube.com/watch?v=bY8w__KKElk)
+
+---
+
+# Accessing Kibana and Elasticsearch
+
+## Default Ports
+
+| Service       | Port |
+| ------------- | ---- |
+| Kibana        | 5601 |
+| Elasticsearch | 9200 |
+
+---
+
+## Step 1 — Find External IP
+
+* Go to your GCP VM or Dataproc cluster
+* Copy the **External IP address**
+
+---
+
+## Step 2 — Access Services
+
+Replace `<YOUR_IP>` with your actual external IP:
+
+### Kibana
+
+```
+http://<YOUR_IP>:5601
+```
+
+### Elasticsearch
+
+```
+http://<YOUR_IP>:9200
+```
+
+### Example
+
+```
+http://45.33.22.55:5601
+```
+
+---
+
+## Important Notes
+
+### Firewall Configuration
+
+If the pages do not load:
+
+* Ensure ports **5601** and **9200** are open in your GCP firewall rules.
+
+Tutorial:
+[https://www.youtube.com/watch?v=2HdYYoMwZWI](https://www.youtube.com/watch?v=2HdYYoMwZWI)
+
+---
+
+### Protocol Warning
+
+* Use **HTTP**, not HTTPS
+
+---
+
+### Cost Reminder
+
+* Delete your cluster or VM after use to avoid unnecessary charges
+
+---
+
+# Loading a Sample Dataset
+
+## Step 1 — Download Dataset
+
+### Command
+
+```bash
 wget https://raw.githubusercontent.com/tofighi/tutorials/master/elk2/data/cars.zip -O cars.zip
+```
 
+---
+
+## Step 2 — Extract Files
+
+### Command
+
+```bash
 unzip cars.zip && rm cars.zip
+```
 
+### Explanation
+
+* Unzips the dataset and removes the zip file to save space.
+
+---
+
+## Step 3 — Move Dataset
+
+### Command
+
+```bash
 mv cars.csv /var/tmp
+```
 
+---
+
+## Step 4 — Download Logstash Configuration
+
+### Command
+
+```bash
 wget https://raw.githubusercontent.com/tofighi/tutorials/master/elk2/logstash_configs/cars_logstash.conf -O cars_logstash.conf
+```
 
-Run Logstash with cars_logstash.conf
+---
 
+## Step 5 — Run Logstash
+
+### Command
+
+```bash
 logstash -f cars_logstash.conf
+```
+
+### Explanation
+
+* Starts Logstash using the provided configuration file
+* Imports the dataset into Elasticsearch
+
+---
+
+## Summary
+
+You have now:
+
+* Installed the ELK stack
+* Accessed Kibana and Elasticsearch
+* Loaded a sample dataset using Logstash
