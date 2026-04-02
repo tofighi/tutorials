@@ -43,7 +43,7 @@ If you skip this step, map visualization will NOT work.
 
 # ⚙️ Step 2: Logstash Configuration
 
-Create file: `311_logstash.conf`
+Create file: `311_logstash_updated.conf`
 
 ```conf
 input {
@@ -113,12 +113,17 @@ output {
 }
 ```
 
+or download from here:
+
+```bash
+wget  https://raw.githubusercontent.com/tofighi/tutorials/refs/heads/master/elk7/configs/311_logstash_updated.conf -O 311_logstash_updated.conf
+```
 ---
 
 # ▶️ Step 3: Run Logstash
 
 ```bash
-bin/logstash -f 311_logstash.conf
+logstash -f 311_logstash_updated.conf
 ```
 
 ---
