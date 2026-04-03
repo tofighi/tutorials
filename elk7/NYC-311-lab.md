@@ -86,4 +86,4 @@ The dataset already contains **latitude and longitude (lat/lon)** fields.
 - Visualize the NYC 311 requests on a **map using geographic coordinates**
 
 ---
-[Solution](https://github.com/tofighi/tutorials/blob/master/elk7/NYC-311-lab.md)
+[Solutions]([https://github.com/tofighi/tutorials/blob/master/elk7/NYC-311-lab.md](https://github.com/tofighi/tutorials/blob/master/elk7/NYC-311-lab-solution.md))
