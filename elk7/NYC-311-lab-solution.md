@@ -29,8 +29,8 @@ curl -X PUT "localhost:9200/nyc311calls" -H 'Content-Type: application/json' -d 
     "properties": {
       "location": {
         "type": "geo_point"
-      },
-          }
+      }
+    }
   }
 }'
 ```
