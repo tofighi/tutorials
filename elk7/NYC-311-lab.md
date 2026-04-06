@@ -16,8 +16,14 @@ Download and prepare the data (a smaller set of the whole dataset):
 
 ```bash
 wget https://huggingface.co/datasets/tofighi/BigDataCourse/resolve/main/311.zip -O 311.zip
+```
+```bash
 unzip 311.zip && rm 311.zip
+```
+```bash
 wget https://raw.githubusercontent.com/tofighi/tutorials/master/elk7/configs/311_logstash.conf
+```
+```bash
 mv 311.csv /var/tmp
 ```
 
